@@ -1,6 +1,11 @@
 {
   "name": "wm-helm-auth-01",
-  "build": { "dockerfile": "Dockerfile" },
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "__uname": "wmhelm"
+    }
+  },
   "remoteEnv": {
     "CONTAINER_WORKSPACE_FOLDER": "${containerWorkspaceFolder}"
   },
@@ -36,8 +41,15 @@
       }
     }
   },
-  "runArgs": ["--rm", "--hostname", "wm-helm-auth-01", "--name", "wm-helm-auth-01"],
+  "runArgs": [
+    "--rm",
+    "--hostname",
+    "wm-helm-auth-01",
+    "--name",
+    "wm-helm-auth-01"
+  ],
   "mounts": [
-    "source=${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached"
+    "source=${localEnv:USERPROFILE}/.ssh,target=/home/wmhelm/.ssh,type=bind,consistency=cached",
+    "source=${localEnv:USERPROFILE}/.kube,target=/home/wmhelm/.kube,type=bind,consistency=cached"
   ]
 }
