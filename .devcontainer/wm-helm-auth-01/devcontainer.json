@@ -14,16 +14,26 @@
         "hediet.vscode-drawio",
         "mervin.markdown-formatter",
         "mhutchie.git-graph",
-        "ms-azuretools.vscode-docker",
+        //"ms-azuretools.vscode-docker",
         "oderwat.indent-rainbow",
         "redhat.vscode-openshift-connector",
-        "redhat.vscode-openshift-extension-pack",
+        //"redhat.vscode-openshift-extension-pack",
         "streetsidesoftware.code-spell-checker",
         "tim-koehler.helm-intellisense",
         "timonwong.shellcheck",
         "trunk.io",
+        "vadzimnestsiarenka.helm-template-preview-and-more",
         "yzhang.markdown-all-in-one"
-      ]
+      ],
+      "settings": {
+        // "vs-kubernetes": {
+        //   "vs-kubernetes.disable-context-info-status-bar": true,
+        //   "vs-kubernetes.disable-namespace-info-status-bar": true,
+        //   "vs-kubernetes.outputFormat": "yaml",
+        //   "vs-kubernetes.ignore-recommendations" : true
+        // },
+        "openshiftToolkit.searchForToolsInPath": true
+      }
     }
   },
   "runArgs": ["--rm", "--hostname", "wm-helm-auth-01", "--name", "wm-helm-auth-01"],

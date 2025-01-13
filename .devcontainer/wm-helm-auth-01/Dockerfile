@@ -85,8 +85,9 @@ RUN curl -fsSL https://pkgs.k8s.io/core:/stable:/${__kube_version}/deb/Release.k
     && chmod 644 /etc/apt/sources.list.d/kubernetes.list \
     && apt-get -qy update \
     && apt-get -qy install --no-install-recommends kubectl=1.* \
+    && curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash \
     && rm -rf /var/lib/apt/lists/*
 
 USER ${__uname}
 
-HEALTHCHECK --interval=60s --timeout=60s --start-period=25s --retries=3  CMD [ exit 0 ]
+HEALTHCHECK --interval=60s --timeout=60s --start-period=25s --retries=3  CMD exit 0
