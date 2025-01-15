@@ -22,7 +22,7 @@
         //"ms-azuretools.vscode-docker",
         "oderwat.indent-rainbow",
         "redhat.vscode-openshift-connector",
-        //"redhat.vscode-openshift-extension-pack",
+        "redhat.vscode-openshift-extension-pack",
         "streetsidesoftware.code-spell-checker",
         "tim-koehler.helm-intellisense",
         "timonwong.shellcheck",
@@ -36,7 +36,7 @@
         //   "vs-kubernetes.disable-namespace-info-status-bar": true,
         //   "vs-kubernetes.outputFormat": "yaml",
         //   "vs-kubernetes.ignore-recommendations" : true
-        // },
+        //},
         "openshiftToolkit.searchForToolsInPath": true
       }
     }
