@@ -1,0 +1,1 @@
+## Prerequisites for API GW Setup on Openshift Environment 
