@@ -41,9 +41,12 @@ Setup Container registry image credentials to download images inside the project
 [webMethods Helm Repo](https://github.com/ibmmi/webmethods-helm-charts/blob/main/README.md#helm-chart-repository-for-ibm-webmethods-products-and-components)
 
 ## Install helm release 
-  helm install api-gw-01 webmethods/apigateway -f mysetup-values.yaml --set-file license=licenseKey.xml
+    
+    helm install api-gw-01 webmethods/apigateway -f mysetup-values.yaml --set-file license=licenseKey.xml
+
 Please provide API Gateway License file.
 
 ## Creating routes using following commands
-   oc expose svc/api-gw-01-apigateway-ui
-   oc expose svc/api-gw-01-apigateway-admin 
+    
+    oc expose svc/api-gw-01-apigateway-ui
+    oc expose svc/api-gw-01-apigateway-admin 
