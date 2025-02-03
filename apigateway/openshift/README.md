@@ -19,7 +19,7 @@ Assign the permission to the service account api-gw-sa to use the built-in user 
     oc adm policy add-scc-to-user anyuid -z api-gw-sa
 
 ## Image Pull secrets
-Setup Container resigtry image credentials to download images inside the project. (  )
+Setup Container registry image credentials to download images inside the project. [wM Containers](https://containers.webmethods.io/)
 
 ## Following Changes are required to be done in values.xml file
         
@@ -37,7 +37,7 @@ Setup Container resigtry image credentials to download images inside the project
                 create: false
                 name: "api-gw-sa"
 
-## Helm repo for webMethods.
+## Setup Helm repo for webMethods.
 [webMethods Helm Repo](https://github.com/ibmmi/webmethods-helm-charts/blob/main/README.md#helm-chart-repository-for-ibm-webmethods-products-and-components)
 
 ## Install helm release 
