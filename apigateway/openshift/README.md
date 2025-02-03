@@ -39,7 +39,7 @@
                 name: "api-gw-sa"
 
 # Helm repo for webMethods.
-     [Adding webMethod helm repo ](https://github.com/ibmmi/webmethods-helm-charts/blob/main/README.md#helm-chart-repository-for-ibm-webmethods-products-and-components)
+    https://github.com/ibmmi/webmethods-helm-charts/blob/main/README.md#helm-chart-repository-for-ibm-webmethods-products-and-components
 
 # Install helm release 
   helm install api-gw-01 webmethods/apigateway -f mysetup-values.yaml --set-file license=licenseKey.xml
