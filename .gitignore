@@ -1,2 +1,4 @@
 /.project
 .DS_Store
+apigateway/openshift/techzone-values.yaml
+apigateway/openshift/licenseKey.xml
