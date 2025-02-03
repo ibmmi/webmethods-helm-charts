@@ -1,25 +1,28 @@
 ## API GW Setup on Openshift Environment 
 
-Prerequisites
+ # Prerequisites
 
  [ECK / Elasticsearch](https://github.com/ibmmi/webmethods-helm-charts/blob/main/apigateway/helm/README.md#prerequisites)
 
-Technical Steps
-    Openshift provides both an administration UI and the oc command line tool. This page describes the steps based on the
-    command line tool.
+# Technical Steps
+    Openshift provides oc command line tool. This page describes the steps based on the command line tool.
 
-Create a new openshift project
-        oc new-project api-gw-01
+# Create a new openshift project
+    oc new-project api-gw-01
 
-Create a service account api-gw-sa.
-        oc create serviceaccount api-gw-sa 
+# Create a service account api-gw-sa.
+    oc create serviceaccount api-gw-sa 
 
-Assign the permission to the service account api-gw-sa to use the built-in user of the image. ( Note: You must have OpenShift administrator privileges to perform this step)
-        oc adm policy add-scc-to-user anyuid -z api-gw-sa
+# Service account permission
+    Assign the permission to the service account api-gw-sa to use the built-in user of the image. ( Note: You must have OpenShift administrator privileges to perform this step)
+        
+    oc adm policy add-scc-to-user anyuid -z api-gw-sa
 
-Create regcred credentials inside project
+# Image Pull secrets
 
-Following Changes are required to be done in values.xml file
+    Setup Container resigtry image crdentials to download images inside the project.
+
+# Following Changes are required to be done in values.xml file
         
         serviceAccount:
             create: false
@@ -35,5 +38,8 @@ Following Changes are required to be done in values.xml file
                 create: false
                 name: "api-gw-sa"
 
- [Adding webMethod helm repo ](https://github.com/ibmmi/webmethods-helm-charts/blob/main/README.md#helm-chart-repository-for-ibm-webmethods-products-and-components)
+# Helm repo for webMethods.
+     [Adding webMethod helm repo ](https://github.com/ibmmi/webmethods-helm-charts/blob/main/README.md#helm-chart-repository-for-ibm-webmethods-products-and-components)
 
+# Install helm release 
+  helm install api-gw-01 webmethods/apigateway -f mysetup-values.yaml --set-file license=licenseKey.xml
