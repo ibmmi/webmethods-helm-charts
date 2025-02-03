@@ -13,13 +13,10 @@ Openshift provides oc command line tool. This page describes the steps based on 
 ## Create a service account api-gw-sa.
     oc create serviceaccount api-gw-sa 
 
-## Service account permission
-Assign the permission to the service account api-gw-sa to use the built-in user of the image. ( Note: You must have OpenShift administrator privileges to perform this step)
-        
-    oc adm policy add-scc-to-user anyuid -z api-gw-sa
-
 ## Image Pull secrets
 Setup Container registry image credentials to download images inside the project. [wM Containers](https://containers.webmethods.io/)
+        
+    kubectl create secret docker-registry regcred --docker-server=<server-url> --docker-username=<user-name> --docker-password=<paasword> --docker-email=<email> -n api-gw-01
 
 ## Following Changes are required to be done in values.xml file
         
@@ -49,4 +46,4 @@ Please provide API Gateway License file.
 ## Creating routes using following commands
     
     oc expose svc/api-gw-01-apigateway-ui
-    oc expose svc/api-gw-01-apigateway-admin 
+    oc expose svc/api-gw-01-apigateway-admin
