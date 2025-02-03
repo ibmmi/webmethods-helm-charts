@@ -2,7 +2,7 @@
 
 Prerequisites
 
-ECK / Elasticsearch [Click] (https://github.com/IBM/webmethods-helm-charts/blob/main/apigateway/helm/README.md#prerequisites)
+ [ECK / Elasticsearch](https://github.com/ibmmi/webmethods-helm-charts/blob/main/apigateway/helm/README.md#prerequisites)
 
 Technical Steps
     Openshift provides both an administration UI and the oc command line tool. This page describes the steps based on the
@@ -20,6 +20,7 @@ Assign the permission to the service account api-gw-sa to use the built-in user 
 Create regcred credentials inside project
 
 Following Changes are required to be done in values.xml file
+        
         serviceAccount:
             create: false
             name: "api-gw-sa"
@@ -34,5 +35,5 @@ Following Changes are required to be done in values.xml file
                 create: false
                 name: "api-gw-sa"
 
-Adding webMethod helm repo - https://github.com/IBM/webmethods-helm-charts/tree/main?tab=readme-ov-file#adding-the-helm-chart-repository
+ [Adding webMethod helm repo ](https://github.com/ibmmi/webmethods-helm-charts/blob/main/README.md#helm-chart-repository-for-ibm-webmethods-products-and-components)
 
