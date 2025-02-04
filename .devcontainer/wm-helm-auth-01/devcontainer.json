@@ -3,7 +3,8 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "__uname": "wmhelm"
+      "__uname": "vscode",
+      "__gname": "vscode"
     }
   },
   "remoteEnv": {
@@ -49,7 +50,7 @@
     "wm-helm-auth-01"
   ],
   "mounts": [
-    "source=${localEnv:USERPROFILE}/.ssh,target=/home/wmhelm/.ssh,type=bind,consistency=cached",
-    "source=${localEnv:USERPROFILE}/.kube,target=/home/wmhelm/.kube,type=bind,consistency=cached"
+    "source=${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached",
+    "source=${localEnv:USERPROFILE}/.kube,target=/home/vscode/.kube,type=bind,consistency=cached"
   ]
 }
