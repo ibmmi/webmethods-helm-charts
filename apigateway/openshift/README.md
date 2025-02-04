@@ -40,17 +40,17 @@ kubectl create secret \
 ```yaml
 serviceAccount:
     create: false
-    name: "api-gw-sa-02"
+    name: "api-gw-sa"
 
 elasticsearch:
     storageClassName : "enter storage class name"
     serviceAccount:
         create: false
-        name: "api-gw-sa-02"
+        name: "api-gw-sa"
 kibana:
     serviceAccount:
         create: false
-        name: "api-gw-sa-02"
+        name: "api-gw-sa"
 ```
 
 ## Setup Helm repo for webMethods
@@ -84,7 +84,7 @@ helm install api-gw-01 webmethods/apigateway `
 ```
 
 ```bat
-helm install api-gw-02 `
+helm install api-gw-01 `
 .\apigateway\helm\ `
 -f .\apigateway\openshift\techzone-values.yaml `
 --set-file license=.\\apigateway\\openshift\\licenseKey.xml
@@ -100,7 +100,7 @@ oc expose svc/api-gw-01-apigateway-admin
 ```
 
 ```sh
-export RELEASE_NAME=api-gw-02
+export RELEASE_NAME=api-gw-01
 oc expose svc/${RELEASE_NAME}-apigateway-ui
 oc expose svc/${RELEASE_NAME}-apigateway-admin
 ```
