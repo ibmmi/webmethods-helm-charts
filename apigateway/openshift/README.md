@@ -26,7 +26,6 @@ Setup Container registry image credentials to download images inside the project
 
 ```sh
 kubectl create secret \
-
     docker-registry regcred \
     --docker-server=<server-url> \
     --docker-username=<user-name> \
@@ -51,6 +50,13 @@ kibana:
     serviceAccount:
         create: false
         name: "api-gw-sa"
+
+prometheus-elasticsearch-exporter:
+    serviceAccount:
+        name: "api-gw-sa"
+    podSecurityContext:
+      # enter value from UID range of an openshift project 
+      runAsUser: 1000760001  
 ```
 
 ## Setup Helm repo for webMethods
@@ -67,26 +73,10 @@ helm repo add webmethods ${REPO_HOME}
 
 ## Install helm release
 
-Shell
-
 ```sh
-helm install api-gw-01 webmethods/apigateway \
-    -f mysetup-values.yaml \
-    --set-file license=licenseKey.xml
-```
-
-Windows commandline
-
-```bat
-helm install api-gw-01 webmethods/apigateway `
-    -f mysetup-values.yaml `
-    --set-file license=licenseKey.xml
-```
-
-```bat
-helm install api-gw-01 `
-.\apigateway\helm\ `
--f .\apigateway\openshift\techzone-values.yaml `
+helm install api-gw-01 \
+.\apigateway\helm\ \
+-f .\apigateway\openshift\techzone-values.yaml \
 --set-file license=.\\apigateway\\openshift\\licenseKey.xml
 ```
 

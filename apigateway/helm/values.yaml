@@ -30,6 +30,14 @@ nameOverride: ""
 # -- Overwrites full workload name. As default, the workload name is release name + '-' + Chart name.
 fullnameOverride: ""
 
+# -- Create a PodDisruptionBudget for API Gateway
+podDisruptionBudget:
+  enabled: false
+  # -- Set a valid PodDisruptionBudgetSpec
+  # spec:
+  #   maxUnavailable: 1
+  #   minAvailable: 1
+
 serviceAccount:
   # -- Specifies whether a service account should be created
   # if you set this to false, you need to specify an existing service account in 'name'.
@@ -802,16 +810,16 @@ prometheus-elasticsearch-exporter:
   # Adjust accordingly if your release name is different.
   extraEnvSecrets:
     ES_PASSWORD:
-      secret: apigw-apigateway-sag-user-es
+      secret: "{{ printf \"%s-apigateway-sag-user-es\" .Release.Name }}"
       key: password
     ES_USER:
-      secret: apigw-apigateway-sag-user-es
+      secret: "{{ printf \"%s-apigateway-sag-user-es\" .Release.Name }}"
       key: username
 
   es:
     # -- The uri of the elasticsearch service. By default this is null and the environment variable ES_URI is used instead.
     # Overwrite this if you are using an external Elasticsearch instance
-    uri: "http://$(ES_USER):$(ES_PASSWORD)@apigw-apigateway-es-http:9200"
+    uri: "http://$(ES_USER):$(ES_PASSWORD)@api-gw-01-apigateway-es-http:9200"
 
   serviceMonitor:
     enabled: false
@@ -822,9 +830,13 @@ prometheus-elasticsearch-exporter:
     prometheus.io/scheme: http
     prometheus.io/scrape: "true"
   
+  serviceAccount:
+    name: ""
+  
   podSecurityContext:
-      # Overwrite this value for openshift
-        runAsUser: null
+    # enter value from UID range of an openshift project 
+    runAsUser: 1000760001
+    runAsNonRoot: true
 
 # -- Import the content as license key and create a ConfigMap named by `licenseConfigMap` value. You can copy/past the content of your provided license key file here.
 license: |
