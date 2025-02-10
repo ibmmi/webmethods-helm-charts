@@ -840,3 +840,15 @@ prometheus-elasticsearch-exporter:
 
 # -- Import the content as license key and create a ConfigMap named by `licenseConfigMap` value. You can copy/past the content of your provided license key file here.
 license: |
+
+# -- Create route for API Gateway UI Port
+route:
+  enabled: true
+  # Enter route name
+  name: ""
+  # Do not change below value
+  portName: uiport
+  labels:
+  annotations:
+  # Enter hostname
+  host: ""

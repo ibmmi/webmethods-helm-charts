@@ -84,13 +84,8 @@ Please provide API Gateway License file.
 
 ## Creating routes using following commands
 
-```sh
-oc expose svc/api-gw-01-apigateway-ui
-oc expose svc/api-gw-01-apigateway-admin
-```
 
 ```sh
 export RELEASE_NAME=api-gw-01
 oc expose svc/${RELEASE_NAME}-apigateway-ui
-oc expose svc/${RELEASE_NAME}-apigateway-admin
 ```
