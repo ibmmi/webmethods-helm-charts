@@ -17,21 +17,43 @@
 #  *
 #  */
 
-{{- if .Values.route.enabled }}
+{{- if .Values.routes.ui.enabled }}
 kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
-  name: {{ .Values.route.name }}
-  labels: {{ .Values.route.labels }}
+  name: {{ .Values.routes.ui.name }}
+  labels: {{ .Values.routes.ui.labels }}
   annotations:
-    {{- range $key, $value := .Values.route.annotations }}
+    {{- range $key, $value := .Values.routes.ui.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
 spec:
-  host: {{ .Values.route.host }}
+  host: {{ .Values.routes.ui.hostName }}
   port:
-    targetPort: {{ .Values.route.portName }} 
+    targetPort: {{ .Values.routes.ui.portName }} 
   to:
     kind: Service
     name: {{ include "common.names.fullname" . }}-ui
+{{- end }}
+
+
+---
+
+{{- if .Values.routes.admin.enabled }}
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: {{ .Values.routes.admin.name }}
+  labels: {{ .Values.routes.admin.labels }}
+  annotations:
+    {{- range $key, $value := .Values.routes.admin.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+spec:
+  host: {{ .Values.routes.admin.hostName }}
+  port:
+    targetPort: {{ .Values.routes.admin.portName }} 
+  to:
+    kind: Service
+    name: {{ include "common.names.fullname" . }}-admin
 {{- end }}

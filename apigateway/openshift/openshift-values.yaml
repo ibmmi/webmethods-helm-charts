@@ -834,21 +834,34 @@ prometheus-elasticsearch-exporter:
     name: ""
   
   podSecurityContext:
-    # enter value {1000770001} from UID range of an openshift project 
-    runAsUser: 1000770001
+    # -- Enter value {1000770001} from UID range of an OpenShift Project. 
+    runAsUser: 1000730001
     runAsNonRoot: true
 
 # -- Import the content as license key and create a ConfigMap named by `licenseConfigMap` value. You can copy/past the content of your provided license key file here.
 license: |
 
-# -- Create route for API Gateway UI Port
-route:
-  enabled: true
-  # Enter route name
-  name: ""
-  # Do not change below value
-  portName: uiport
-  labels:
-  annotations:
-  # Enter hostname
-  host: ""
+# -- Routes for admin, ui port
+routes:
+ # -- Route for API Gateway UI Port
+  ui:
+    enabled: true
+    # Enter route name
+    name: ""
+    # Do not change below value
+    portName: uiport
+    labels:
+    annotations:
+    # Enter hostname
+    hostName: ""
+ # -- Route for API Gateway Admin Port
+  admin:
+    enabled: true
+    # Enter route name
+    name: ""
+    # Do not change below value
+    portName: adminport
+    labels:
+    annotations:
+    # Enter hostname
+    hostName: ""
