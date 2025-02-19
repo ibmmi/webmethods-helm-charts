@@ -9,7 +9,7 @@ image:
   # Change this for air-gapped installations or custom images.
   # For the IBM webMethods container repository you need to have a
   # valid access token stored as registry credentials
-  repository: sagcr.azurecr.io/apigateway-minimal
+  repository: ibmwebmethods.azurecr.io/apigateway-minimal
   pullPolicy: IfNotPresent
   # -- The image tag of the apigateway image default this will be the latest version.
   # For realworld scenarios SAG recommends to use a
